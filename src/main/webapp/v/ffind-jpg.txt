@@ -1,0 +1,57 @@
+{
+  "DRUG_ID" : 3,
+  "DRUG_NAME" : "Гепарин",
+  "isChanged" : true,
+  "doses" : [ {
+    "DOSECONCENTRATON_UNIT" : "",
+    "DOSECONCENTRATON_NUMBER" : "",
+    "DOSE_UNIT" : "",
+    "DOSE_NUMBER" : "",
+    "DOSE_ID" : "",
+    "DOSE_ROUTE_OF_ADMINISTRATION" : ""
+  }, {
+    "DOSECONCENTRATON_UNIT" : "",
+    "DOSECONCENTRATON_NUMBER" : "",
+    "DOSE_UNIT" : "",
+    "DOSE_NUMBER" : "5000",
+    "DOSE_ID" : "",
+    "DOSE_ROUTE_OF_ADMINISTRATION" : ""
+  } ],
+  "prescribesHistory" : [ {
+    "prescribes" : {
+      "tasks" : [ {
+        "DRUG_NAME" : "Гепарин",
+        "dose" : {
+          "DOSECONCENTRATON_UNIT" : "",
+          "DOSECONCENTRATON_NUMBER" : "",
+          "DOSE_UNIT" : "",
+          "DOSE_NUMBER" : "5000",
+          "DOSE_ID" : "",
+          "DOSE_ROUTE_OF_ADMINISTRATION" : ""
+        },
+        "DRUG_ARCHIVE" : false,
+        "DRUG_ID" : 3,
+        "times" : {
+          "hours" : [ null, null, null, null, null, null, null, null, null, null, "-", null, null, null, null, null, "-", null, null, null, null, null, null, "-" ]
+        },
+        "groupPosition" : 0
+      }, {
+        "DRUG_NAME" : "Гепарин",
+        "dose" : {
+          "DOSECONCENTRATON_UNIT" : "",
+          "DOSECONCENTRATON_NUMBER" : "",
+          "DOSE_UNIT" : "",
+          "DOSE_NUMBER" : "5000",
+          "DOSE_ID" : "",
+          "DOSE_ROUTE_OF_ADMINISTRATION" : ""
+        },
+        "DRUG_ARCHIVE" : false,
+        "DRUG_ID" : 3,
+        "times" : {
+          "hours" : [ null, null, null, null, null, null, null, null, null, null, "-", null, null, null, null, null, "-", null, null, null, null, null, null, "-" ]
+        }
+      } ]
+    }
+  } ],
+  "savedTs" : 1418161531750
+}
