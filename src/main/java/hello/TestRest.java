@@ -13,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import hello.service.JsonToFileService;
+import hello.service.FileService;
 
 @Controller
 public class TestRest {
-
-
-	@Autowired private JsonToFileService jsonToFileService;
 
 	@RequestMapping(value = "/page1/readJsonFromRam", method = RequestMethod.GET)
 	public  @ResponseBody Map<String, Object> readJsonFromRam() {

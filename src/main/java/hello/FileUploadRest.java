@@ -1,9 +1,12 @@
 package hello;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,14 +20,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,18 +36,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import hello.PropertiConfig;
-
 @Controller
 public class FileUploadRest {
 	private static final Logger logger = LoggerFactory.getLogger(FileUploadRest.class);
 
 	@Autowired private PropertiConfig propertiConfig;
 	
-	private String arar(String raion) {
-		String dir = "anesthesia-report/2015/"+raion+"/";
-		return dir;
-	}
 	public void copyDbFileToWeb(String fileName) {
 		String fromDir = propertiConfig.folderDb+propertiConfig.folderPublicFiles;
 		logger.debug("cp "+fromDir+fileName +" "+propertiConfig.applicationViewPath());
