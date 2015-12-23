@@ -33,5 +33,10 @@
 			<type>1</type>
 			<location>/home/roman/algoritmed.com/tmp/fcc.json</location>
 		</link>
+		<link>
+			<name>src/main/webapp/page1/modal2.html</name>
+			<type>1</type>
+			<location>/home/roman/algoritmed.com/tmp/modal/modal2.html</location>
+		</link>
 	</linkedResources>
 </projectDescription>

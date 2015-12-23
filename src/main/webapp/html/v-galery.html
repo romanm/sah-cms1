@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="sah1App" ng-controller="sah1Ctrl">
 <head>
-<title>sah1 view</title>
-
+<title>Basic Modal Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/v/lib/css/bootstrap.css">
@@ -18,8 +17,10 @@
 <script type="text/javascript" src="/v/lib/js/textAngular-sanitize.min.js"></script>
 <script type="text/javascript" src="/v/lib/js/textAngular.min.js"></script>
 
+<script type="text/javascript" src="/v/lib/js/bootstrap.min.js"></script>
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body>
+	
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -29,10 +30,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="home"> <span
-					class="glyphicon glyphicon-home" aria-hidden="true">
-					</span>
-					САХ
-					 /
+					class="glyphicon glyphicon-home" aria-hidden="true"> </span> САХ /
 				</a> <a class="navbar-brand" title="до початку сторінки" href="#top"><span
 					class="glyphicon glyphicon-chevron-up"></span></a>
 
@@ -43,35 +41,36 @@
 	<div class="jumbotron jumbotron-edit text-center">
 		<h1 ng-bind-html="pageObject.title">BugTinyWiki view</h1>
 	</div>
-
+	
 	<div class="container-fluid">
-		<div ng-bind-html="pageObject.html"></div>
-		
-		<div ng-if="role" class="row bg-grey">
+		<h1>Basic Modal Example</h1>
 
-			<div class="col-sm-1 form-group">
-				<span class="glyphicon glyphicon-console" aria-hidden="true"></span>
-			</div>
-			<div class="col-sm-11 form-group">
-				<a class="btn btn-default" href="/html/sah1-file-load.html">
-					Загрузка файлів </a> <a class="btn btn-primary" href="/html/e-sah1.html">
-					Редагування сторінки </a> <a class="btn btn-default"
-					href="/html/site-map.html"> Карта сайту </a> <a href="/endlogin"
-					class="btn btn-default pull-right"
-					title="завершити логін для редагування даних на сайті"> <span
-					class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-				</a>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+			data-target="#myModal">Open Modal</button>
+		<a data-toggle="modal" data-target="#myModal"> Open Modal </a>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog  modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+					</div>
+					<div class="modal-body">
+						<p>Some text in the modal.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
-		
+
 	</div>
-
-	<footer class="container-fluid text-center">
-		<a href="#top" title="To Top"> <span
-			class="glyphicon glyphicon-chevron-up"></span>
-		</a>
-	</footer>
-
+	
 	<script type="text/javascript" src="/v/js/sah1.js"></script>
 	
 </body>

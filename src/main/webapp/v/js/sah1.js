@@ -55,6 +55,12 @@ var initFunction = function($scope, $http){
 	}
 }
 
+angular.module("m3App", ['textAngular'])
+.controller("m3Ctrl", function initController($scope, $http) {
+	console.log("-----------------");
+});
+
+
 angular.module("sah1App", ['textAngular'])
 .controller("sah1Ctrl", function initController($scope, $http) {
 	initFunction($scope, $http);
