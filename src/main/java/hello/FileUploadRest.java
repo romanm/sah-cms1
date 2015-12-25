@@ -1,12 +1,9 @@
 package hello;
 
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,9 +17,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,8 +80,10 @@ public class FileUploadRest {
 		String dbFileViewDir = propertiConfig.folderDb + propertiConfig.folderPublicFiles;
 		logger.debug(dbFileViewDir);
 		File dm = openCreateFolder(dbFileViewDir);
+
 logger.debug(""+dm);
 logger.debug(""+file);
+
 		if (!file.isEmpty()) {
 			try {
 				byte[] bytes = file.getBytes();

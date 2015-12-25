@@ -27,9 +27,7 @@ var initFunction = function($scope, $http){
 	setPageKey($scope);
 	$http.get("/v/readContent").success(function(response) {
 		$scope.jsonFromRam = response;
-		console.log($scope.jsonFromRam);
 		$scope.pageObject = response.pages[$scope.pageKey];
-		console.log($scope.pageObject);
 	});
 
 	$scope.pagesKeys = function(object){
@@ -42,15 +40,14 @@ var initFunction = function($scope, $http){
 		if($scope.user.authorities)
 			$scope.role = $scope.user.authorities[0].authority
 			.split("_")[1];
-		console.log($scope.role);
 	});
 	
 	$scope.saveJsonToFile = function(){
 		$http.post('/saveCommonContent', $scope.jsonFromRam).
 		then(function(response) {
-			console.log("---------success--------");
+			console.log("---saveCommonContent------success--------");
 		}, function(response) {
-			console.log("----------erros-------");
+			console.log("---saveCommonContent-------erros-------");
 		});
 	}
 }
@@ -70,10 +67,10 @@ angular.module("sitemap1App", ['textAngular'])
 .controller("sitemap1Ctrl", function initController($scope, $http) {
 	initFunction($scope, $http);
 	$scope.verifyPagesKeysUniqueObject = {};
+	$scope.hasNewPage = false;
 
 	$scope.initVerifyPagesKeysUnique = function(pageKey){
 		$scope.verifyPagesKeysUniqueObject[pageKey] = pageKey;
-		console.log($scope.verifyPagesKeysUniqueObject);
 	}
 
 	$scope.changePageKey = function(){
@@ -90,22 +87,8 @@ angular.module("sitemap1App", ['textAngular'])
 				delete $scope.jsonFromRam.pages[ key ];
 			}
 		});
-		if(changed){
-			console.log("---------changed--------")
+		if(changed || $scope.hasNewPage){
 			$scope.saveJsonToFile();
-		}
-	}
-
-	$scope.verifyPagesKeysUnique = function(pageKey, newPageKey){
-		console.log(pageKey);
-		if(newPageKey!=pageKey){
-			if($scope.verifyPagesKeysUniqueObject[newPageKey]){
-				console.log(newPageKey);
-				console.log(newPageKey.length);
-				var correct = newPageKey.substring(0, newPageKey.length - 1);
-				console.log(correct);
-				$scope.verifyPagesKeysUniqueObject[pageKey] = correct;
-			}
 		}
 	}
 
@@ -122,10 +105,19 @@ angular.module("sitemap1App", ['textAngular'])
 		console.log(lastPage+"/"+maxPage);
 		var page = "page" + (maxPage/1 + 1);
 		$scope.jsonFromRam.pages[page] = {"title" : page, "fileType" : "textHtml1", "html" : "page text"};
-		
 		console.log($scope.jsonFromRam);
+		$scope.hasNewPage = true;
 	}
-	
+
+	$scope.verifyPagesKeysUnique = function(pageKey, newPageKey){
+		if(newPageKey!=pageKey){
+			if($scope.verifyPagesKeysUniqueObject[newPageKey]){
+				var correct = newPageKey.substring(0, newPageKey.length - 1);
+				$scope.verifyPagesKeysUniqueObject[pageKey] = correct;
+			}
+		}
+	}
+
 });
 
 

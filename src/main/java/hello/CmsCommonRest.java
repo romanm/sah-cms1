@@ -35,8 +35,11 @@ public class CmsCommonRest {
 
 	@RequestMapping(value = "/saveCommonContent", method = RequestMethod.POST)
 	public  @ResponseBody Map<String, Object> saveCommonContent(@RequestBody Map<String, Object> commonContentJavaObject) {
+		logger.debug("/saveCommonContent");
 		fileService.saveJsonToFile(commonContentJavaObject,propertiConfig.fileCommonContent);
+		logger.debug("2");
 		fileService.backup(propertiConfig.fileCommonContent);
+		logger.debug("3");
 		return commonContentJavaObject;
 	}
 
